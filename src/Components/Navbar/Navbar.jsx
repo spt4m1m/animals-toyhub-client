@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ActiveRoute from '../ActiveRoute/ActiveRoute';
 
 const list = <>
-    <li><Link to='home'>Home</Link></li>
-    <li><Link to='alltoys'>All Toys</Link></li>
-    <li><Link to='mytoys'>My Toys</Link></li>
-    <li><Link to='addtoy'>Add Toy</Link></li>
-    <li><Link to='login'>Login</Link></li>
-    <li><Link to='register'>Register</Link></li>
+    <li><ActiveRoute to='home'>Home</ActiveRoute></li>
+    <li><ActiveRoute to='alltoys'>All Toys</ActiveRoute></li>
+    <li><ActiveRoute to='mytoys'>My Toys</ActiveRoute></li>
+    <li><ActiveRoute to='addtoy'>Add Toy</ActiveRoute></li>
+    <li><ActiveRoute to='login'>Login</ActiveRoute></li>
+    <li><ActiveRoute to='register'>Register</ActiveRoute></li>
 </>
 
 const Navbar = () => {
