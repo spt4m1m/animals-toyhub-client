@@ -1,12 +1,11 @@
+import Navbar from "./Components/Navbar/Navbar"
 
 
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-center">
-        animals toyhub project init
-      </h1>
+      <Navbar />
     </>
   )
 }
