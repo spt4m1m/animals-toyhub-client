@@ -27,7 +27,6 @@ const Register = () => {
         registerAUser(email, password)
             .then(res => {
                 const user = res.user;
-                console.log(user);
                 updateAUserProfile(user, name, photoUrl)
                     .then(() => { toast.success(`Register Successfully with ${user.displayName}`) })
                     .catch(error => toast.error(`${error.message}`))

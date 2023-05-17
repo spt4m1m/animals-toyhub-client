@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
 
 const Login = () => {
-
+    const location = useLocation();
+    const navigate = useNavigate();
     const { loginAUser, googleLogin, loading, setLoading } = useContext(AuthContext);
+    const from = location.state?.from?.pathname || '/';
 
     if (loading) {
         return <Loading />
@@ -25,6 +27,7 @@ const Login = () => {
                 const user = res.user;
                 toast.success(`Login Successfully with ${user.displayName}`)
                 setLoading(false)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(`${error.message}`)
@@ -42,6 +45,7 @@ const Login = () => {
                 const user = result.user;
                 toast.success(`Successfull login with ${user.displayName}`)
                 setLoading(false)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
