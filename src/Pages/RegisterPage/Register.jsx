@@ -7,9 +7,13 @@ import Loading from '../../Components/Loading/Loading';
 
 const Register = () => {
 
-    const { registerAUser, updateAUserProfile } = useContext(AuthContext);
+    const { registerAUser, updateAUserProfile, googleLogin, loading, setLoading } = useContext(AuthContext);
 
+    if (loading) {
+        return <Loading />
+    }
 
+    // email pass register 
     const handleRegisterAUser = e => {
         e.preventDefault();
         const form = e.target;
@@ -28,10 +32,30 @@ const Register = () => {
                     .then(() => { toast.success(`Register Successfully with ${user.displayName}`) })
                     .catch(error => toast.error(`${error.message}`))
 
+                setLoading(false)
             })
-            .catch(error => toast.error(`${error.message}`))
+            .catch(error => {
+                toast.error(`${error.message}`)
+                setLoading(false)
+            })
 
         e.target.reset()
+    }
+
+    // google login 
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                toast.success(`Successfull login with ${user.displayName}`)
+                setLoading(false)
+            })
+            .catch(error => {
+                if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
+                    toast.error("Login cancelled by user")
+                    setLoading(false)
+                }
+            })
     }
 
 
@@ -103,6 +127,7 @@ const Register = () => {
                             <div className="flex flex-row items-center justify-center lg:justify-start">
                                 <p className="text-xl mb-0 mr-4 text-black">Register with -:</p>
                                 <button
+                                    onClick={handleGoogleLogin}
                                     type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"

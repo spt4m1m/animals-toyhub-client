@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Loading from '../../Components/Loading/Loading';
 
 const Login = () => {
 
-    const { loginAUser } = useContext(AuthContext);
+    const { loginAUser, googleLogin, loading, setLoading } = useContext(AuthContext);
 
+    if (loading) {
+        return <Loading />
+    }
+
+    // email pass login 
     const handleLoginAUser = e => {
         e.preventDefault();
         const form = e.target;
@@ -18,11 +24,31 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 toast.success(`Login Successfully with ${user.displayName}`)
+                setLoading(false)
             })
-            .catch(error => toast.error(`${error.message}`))
+            .catch(error => {
+                toast.error(`${error.message}`)
+                setLoading(false)
+            })
 
 
         e.target.reset()
+    }
+
+    // google login 
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                toast.success(`Successfull login with ${user.displayName}`)
+                setLoading(false)
+            })
+            .catch(error => {
+                if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
+                    toast.error("Login cancelled by user")
+                    setLoading(false)
+                }
+            })
     }
 
 
@@ -75,6 +101,7 @@ const Login = () => {
                             <div className="flex flex-row items-center justify-center lg:justify-start">
                                 <p className="text-xl mb-0 mr-4">Login in with -: </p>
                                 <button
+                                    onClick={handleGoogleLogin}
                                     type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
