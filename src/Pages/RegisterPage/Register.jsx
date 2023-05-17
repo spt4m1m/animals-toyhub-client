@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
+import Loading from '../../Components/Loading/Loading';
 
 const Register = () => {
+
+    const { registerAUser, updateAUserProfile } = useContext(AuthContext);
+
+
+    const handleRegisterAUser = e => {
+        e.preventDefault();
+        const form = e.target;
+
+        const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+        registerAUser(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                updateAUserProfile(user, name, photoUrl)
+                    .then(() => { toast.success(`Register Successfully with ${user.displayName}`) })
+                    .catch(error => toast.error(`${error.message}`))
+
+            })
+            .catch(error => toast.error(`${error.message}`))
+
+        e.target.reset()
+    }
 
 
     return (
@@ -22,7 +52,7 @@ const Register = () => {
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
                         <h1 className='text-2xl text-center font-semibold py-10 underline-offset-2'>Please Register !</h1>
-                        <form>
+                        <form onSubmit={handleRegisterAUser}>
                             {/* <!-- Name input --> */}
                             <div className="mb-6">
                                 <input
