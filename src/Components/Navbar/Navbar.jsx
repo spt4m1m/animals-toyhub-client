@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const list = <>
-    <li><a>Home</a></li>
-    <li><a>All Toys</a></li>
-    <li><a>My Toys</a></li>
-    <li><a>Add Toy</a></li>
-    <li><a>Login</a></li>
-    <li><a>Register</a></li>
+    <li><Link to='home'>Home</Link></li>
+    <li><Link to='alltoys'>All Toys</Link></li>
+    <li><Link to='mytoys'>My Toys</Link></li>
+    <li><Link to='addtoy'>Add Toy</Link></li>
+    <li><Link to='login'>Login</Link></li>
+    <li><Link to='register'>Register</Link></li>
 </>
 
 const Navbar = () => {
@@ -25,7 +26,7 @@ const Navbar = () => {
                     <div className="w-24 rounded-full">
                         <img src='toyhublogo.png' />
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Animals ToyHub</a>
+                    <a className="btn btn-ghost normal-case text-2xl">Animals ToyHub</a>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-semibold">
