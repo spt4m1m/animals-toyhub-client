@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
+
+    const { loginAUser } = useContext(AuthContext);
+
+    const handleLoginAUser = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        loginAUser(email, password)
+            .then(res => {
+                const user = res.user;
+                toast.success(`Login Successfully with ${user.displayName}`)
+            })
+            .catch(error => toast.error(`${error.message}`))
+
+
+        e.target.reset()
+    }
 
 
     return (
@@ -22,7 +43,7 @@ const Login = () => {
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
                         <h1 className='text-2xl py-10 underline-offset-2 text-center font-semibold'>Please Login !</h1>
-                        <form>
+                        <form onSubmit={handleLoginAUser}>
 
                             {/* <!-- Email input --> */}
                             <div className="mb-6">
