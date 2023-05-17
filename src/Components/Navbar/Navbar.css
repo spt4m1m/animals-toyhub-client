@@ -1,0 +1,4 @@
+.img:hover .name {
+    display: inline-block;
+    transition: .4s;
+}

@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ActiveRoute from '../ActiveRoute/ActiveRoute';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
+import './Navbar.css'
+import { toast } from 'react-hot-toast';
 
-const list = <>
-    <li><ActiveRoute to='home'>Home</ActiveRoute></li>
-    <li><ActiveRoute to='blogs'>Blogs</ActiveRoute></li>
-    <li><ActiveRoute to='alltoys'>All Toys</ActiveRoute></li>
-    <li><ActiveRoute to='mytoys'>My Toys</ActiveRoute></li>
-    <li><ActiveRoute to='addtoy'>Add Toy</ActiveRoute></li>
-    <li><ActiveRoute to='login'>Login</ActiveRoute></li>
-    <li><ActiveRoute to='register'>Register</ActiveRoute></li>
-</>
+
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => toast.success('Logout Successfully'))
+            .catch(error => toast.error(`${error.message}`))
+    }
+
+    const list = <>
+        <li><ActiveRoute to='home'>Home</ActiveRoute></li>
+        <li><ActiveRoute to='blogs'>Blogs</ActiveRoute></li>
+        {
+            user ? <>
+                <li><ActiveRoute to='alltoys'>All Toys</ActiveRoute></li>
+                <li><ActiveRoute to='mytoys'>My Toys</ActiveRoute></li>
+                <li><ActiveRoute to='addtoy'>Add Toy</ActiveRoute></li>
+                <li><button onClick={handleLogOut}>Log Out</button></li>
+                <div className="w-12 rounded-full relative img">
+                    <img className='shadow-md' src={user.photoURL} />
+                    <p className='name absolute hidden top-16 left-[-10px] shadow-md p-2 rounded-md text-primary'>{user.displayName}</p>
+                </div>
+            </> : <>
+                <li><ActiveRoute to='login'>Login</ActiveRoute></li>
+                <li><ActiveRoute to='register'>Register</ActiveRoute></li>
+            </>
+        }
+
+
+    </>
     return (
         <div>
             <div className="navbar bg-base-100">
