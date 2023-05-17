@@ -1,8 +1,10 @@
 import React from 'react';
 import ActiveRoute from '../ActiveRoute/ActiveRoute';
+import { Link } from 'react-router-dom';
 
 const list = <>
     <li><ActiveRoute to='home'>Home</ActiveRoute></li>
+    <li><ActiveRoute to='blogs'>Blogs</ActiveRoute></li>
     <li><ActiveRoute to='alltoys'>All Toys</ActiveRoute></li>
     <li><ActiveRoute to='mytoys'>My Toys</ActiveRoute></li>
     <li><ActiveRoute to='addtoy'>Add Toy</ActiveRoute></li>
@@ -26,7 +28,7 @@ const Navbar = () => {
                     <div className="w-24 rounded-full">
                         <img src='toyhublogo.png' />
                     </div>
-                    <a className="btn btn-ghost normal-case text-2xl">Animals ToyHub</a>
+                    <Link to='/' className="btn btn-ghost normal-case text-2xl">Animals ToyHub</Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-semibold">
