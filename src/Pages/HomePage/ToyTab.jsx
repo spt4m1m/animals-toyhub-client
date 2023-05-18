@@ -29,14 +29,14 @@ const ToyTab = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-3'>
                         {
                             toys.slice(0, 3).map(toy => <Toy toy={toy} key={toy._id} />)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-3'>
                         {
                             toys.slice(0, 3).map(toy => <Toy toy={toy} key={toy._id} />)
                         }
