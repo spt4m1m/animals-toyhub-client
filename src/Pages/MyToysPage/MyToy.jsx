@@ -1,7 +1,21 @@
 import React from 'react';
+import { toast } from 'react-hot-toast';
 
-const MyToy = ({ toy }) => {
-    const { photoUrl, name, description, price, availableQuantity, ratings, category, sellerName, sellerEmail } = toy
+const MyToy = ({ toy, refetch }) => {
+    const { photoUrl, name, description, price, availableQuantity, ratings, category, sellerName, sellerEmail } = toy;
+
+    const handleToyDelete = (id) => {
+        fetch(`http://localhost:5000/alltoys/delete/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status == 'success') {
+                    toast.success('Deleted A Toy')
+                    refetch()
+                }
+            })
+    }
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl m-3">
@@ -17,7 +31,7 @@ const MyToy = ({ toy }) => {
                     <p><strong>Seller Email :</strong> {sellerEmail}</p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">Update</button>
-                        <button className="btn btn-primary">Delete</button>
+                        <button onClick={() => handleToyDelete(toy._id)} className="btn btn-primary">Delete</button>
                     </div>
 
                 </div>

@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
-    const { isLoading, data: toys } = useQuery({
+    const { isLoading, data: toys, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
             fetch(`http://localhost:5000/alltoys?email=${user.email}`).then(
@@ -23,7 +23,7 @@ const MyToys = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-3'>
                 {
-                    toys.map(toy => <MyToy toy={toy} key={toy._id} />)
+                    toys.map(toy => <MyToy toy={toy} key={toy._id} refetch={refetch} />)
                 }
             </div>
 
