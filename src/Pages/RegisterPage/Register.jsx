@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
+import registerImg from '../../assets/register.svg'
 
 const Register = () => {
     const navigate = useNavigate()
@@ -68,7 +69,7 @@ const Register = () => {
                         className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
                     >
                         <img
-                            src="register.svg"
+                            src={registerImg}
                             className="w-full"
                             alt=""
                         />

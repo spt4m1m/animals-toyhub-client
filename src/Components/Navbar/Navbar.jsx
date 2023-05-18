@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import './Navbar.css'
 import { toast } from 'react-hot-toast';
+import toyhublogo from '../../assets/toyhublogo.png'
 
 
 
@@ -50,7 +51,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="w-24 rounded-full">
-                        <img src='toyhublogo.png' />
+                        <img src={toyhublogo} />
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-2xl">Animals ToyHub</Link>
                 </div>
