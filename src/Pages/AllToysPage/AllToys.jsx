@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Toy from './Toy';
+import Loading from '../../Components/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const AllToys = () => {
-    const [toys, setToys] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/alltoys')
-            .then(res => res.json())
-            .then(data => setToys(data))
-    }, [])
+    const { isLoading, data: toys } = useQuery({
+        queryKey: ['repoData'],
+        queryFn: () =>
+            fetch('http://localhost:5000/alltoys').then(
+                (res) => res.json(),
+            ),
+    })
+    if (isLoading) {
+        return <Loading />
+    }
     return (
         <div>
             <h1 className='text-center text-3xl'>All Toys</h1>

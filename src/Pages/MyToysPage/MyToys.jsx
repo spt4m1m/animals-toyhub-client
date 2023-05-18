@@ -1,16 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import MyToy from './MyToy';
+import Loading from '../../Components/Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const MyToys = () => {
-    const [toys, setToys] = useState([])
     const { user } = useContext(AuthContext)
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/alltoys?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setToys(data))
-    }, [])
+    const { isLoading, data: toys } = useQuery({
+        queryKey: ['repoData'],
+        queryFn: () =>
+            fetch(`http://localhost:5000/alltoys?email=${user.email}`).then(
+                (res) => res.json(),
+            ),
+    })
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <div>
