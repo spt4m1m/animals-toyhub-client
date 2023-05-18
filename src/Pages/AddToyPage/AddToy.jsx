@@ -90,7 +90,7 @@ const AddToy = () => {
                             <option>Select Sub-Category</option>
                             <option>Fish</option>
                             <option>Bird</option>
-                            <option>Cow Type (4Legs)</option>
+                            <option>Horse</option>
                         </select>
                     </div>
                 </div>

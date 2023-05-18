@@ -6,7 +6,7 @@ const AboutUs = () => {
         <div>
             <div className="hero min-h-[70vh] py-10">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img src={aboutimg} className="max-w-sm md:max-w-2xl rounded-lg shadow-2xl" />
+                    <img src={aboutimg} className="max-w-xsm md:max-w-2xl rounded-lg shadow-2xl" />
                     <div className='md:ms-10'>
                         <h1 className="text-5xl font-bold">About Us</h1>
                         <p className="py-6">
