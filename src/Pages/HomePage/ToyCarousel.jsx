@@ -64,7 +64,7 @@ const ToyCarousel = () => {
                 <div className="carousel-item w-1/2 shadow-lg">
                     <img src='https://i.ibb.co/KKGSHNL/eagle.jpg' className="w-full" />
                 </div>
-            </Carousel>;
+            </Carousel>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import Support from './Support';
 import AboutUs from './AboutUs';
 import ToyTab from './ToyTab';
 import ToyCarousel from './ToyCarousel';
+import Testimonial from './Testimonial';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <AboutUs />
             <ToyCarousel />
             <ToyTab />
+            <Testimonial />
         </div>
     );
 };
