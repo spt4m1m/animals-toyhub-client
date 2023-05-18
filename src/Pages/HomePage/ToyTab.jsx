@@ -11,7 +11,6 @@ const ToyTab = () => {
             .then(res => res.json())
             .then(data => setToys(data))
     }, [category])
-    console.log(toys);
     return (
         <div className='py-10 max-w-[1200px] mx-auto'>
             <h1 className='text-4xl text-center mb-10'>Explore Toys By Categories</h1>

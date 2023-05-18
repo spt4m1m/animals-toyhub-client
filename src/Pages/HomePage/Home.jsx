@@ -3,6 +3,7 @@ import Banner from './Banner';
 import Support from './Support';
 import AboutUs from './AboutUs';
 import ToyTab from './ToyTab';
+import ToyCarousel from './ToyCarousel';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Banner />
             <Support />
             <AboutUs />
+            <ToyCarousel />
             <ToyTab />
         </div>
     );
