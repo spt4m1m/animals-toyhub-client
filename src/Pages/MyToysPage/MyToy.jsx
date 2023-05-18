@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const MyToy = ({ toy, refetch }) => {
     const { photoUrl, name, description, price, availableQuantity, ratings, category, sellerName, sellerEmail } = toy;
@@ -30,7 +31,7 @@ const MyToy = ({ toy, refetch }) => {
                     <p><strong>Seller Name :</strong> {sellerName}</p>
                     <p><strong>Seller Email :</strong> {sellerEmail}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Update</button>
+                        <Link to={`/mytoy/updatetoy/${toy._id}`} className="btn btn-primary">Update</Link>
                         <button onClick={() => handleToyDelete(toy._id)} className="btn btn-primary">Delete</button>
                     </div>
 
