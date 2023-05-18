@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
 
 const Register = () => {
-
+    const navigate = useNavigate()
     const { registerAUser, updateAUserProfile, googleLogin, loading, setLoading } = useContext(AuthContext);
 
     if (loading) {
@@ -30,8 +30,8 @@ const Register = () => {
                 updateAUserProfile(user, name, photoUrl)
                     .then(() => { toast.success(`Register Successfully with ${user.displayName}`) })
                     .catch(error => toast.error(`${error.message}`))
-
                 setLoading(false)
+                navigate('/')
             })
             .catch(error => {
                 toast.error(`${error.message}`)

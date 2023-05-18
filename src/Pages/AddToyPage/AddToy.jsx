@@ -1,13 +1,55 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
 
+
+    const handleToyData = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
+        const description = form.description.value;
+        const price = parseInt(form.price.value);
+        const availableQuantity = parseInt(form.availableQuantity.value);
+        const ratings = parseInt(form.ratings.value);
+        const sellerName = form.sellerName.value;
+        const sellerEmail = form.sellerEmail.value;
+        const category = form.category.value;
+        const toydata = {
+            name,
+            photoUrl,
+            description,
+            price,
+            availableQuantity,
+            ratings,
+            sellerEmail,
+            sellerName,
+            category
+        }
+        fetch('http://localhost:5000/alltoys', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toydata)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status == 'success') {
+                    toast.success(`Added Toy Successfully`)
+                }
+            })
+
+        form.reset();
+    }
+
     return (
         <div>
             <h1 className='text-center text-3xl underline'>Add A Toy</h1>
-            <form className='p-5'>
+            <form className='p-5' onSubmit={handleToyData}>
                 <div className="relative z-0 w-full mb-6 group">
                     <input autoComplete='off' type="text" name="name" id="name" className="text-black block py-2.5 px-0 w-full text-xl  bg-transparent border-0 border-b-2 font-semibold appearance-none border-black dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer bg-none" placeholder=" " required />
                     <label htmlFor="name" className="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name*</label>
