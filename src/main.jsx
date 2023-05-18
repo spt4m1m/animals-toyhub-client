@@ -21,6 +21,7 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import SingleToy from './Components/SingleToy/SingleToy.jsx';
 import UpdateToy from './Components/SingleToy/UpdateToy.jsx';
+import NotFound from './Components/NotFound/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '*',
+    element: <NotFound />
+  }
 ]);
 const queryClient = new QueryClient()
 
