@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 const UpdateToy = () => {
     const { id } = useParams();
@@ -63,6 +64,9 @@ const UpdateToy = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Animals Toyhub | Update Toy</title>
+            </Helmet>
             {
                 toy.map(toy => <form onSubmit={handleUpdateToy} key={toy._id} className='p-5'>
                     <div className="relative z-0 w-full mb-6 group">

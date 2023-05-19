@@ -3,6 +3,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import MyToy from './MyToy';
 import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -19,6 +20,9 @@ const MyToys = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Animals Toyhub | My Toys</title>
+            </Helmet>
             <h1 className='text-center text-3xl'>{`You added ${toys.length} Toys`}</h1>
 
             <div className="overflow-x-auto my-10">

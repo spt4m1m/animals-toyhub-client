@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const SingleToy = () => {
     const { id } = useParams();
@@ -19,6 +20,9 @@ const SingleToy = () => {
     const { photoUrl, name, description, price, availableQuantity, ratings, category, sellerName, sellerEmail } = toy[0];
     return (
         <div>
+            <Helmet>
+                <title>Animals Toyhub | Toy Details</title>
+            </Helmet>
             <div className="card card-side bg-base-100 shadow-xl">
                 <figure><img src={photoUrl} alt="toy picture" /></figure>
                 <div className="card-body">

@@ -5,6 +5,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
 import registerImg from '../../assets/register.svg'
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -61,6 +62,9 @@ const Register = () => {
 
     return (
         <section className="h-screen">
+            <Helmet>
+                <title>Animals Toyhub | Register</title>
+            </Helmet>
             <div className="px-6 h-full">
                 <div
                     className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"

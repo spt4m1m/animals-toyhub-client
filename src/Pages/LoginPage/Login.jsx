@@ -5,6 +5,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
 import loginImg from '../../assets/login.svg'
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const location = useLocation();
@@ -59,6 +60,9 @@ const Login = () => {
 
     return (
         <section className="h-screen">
+            <Helmet>
+                <title>Animals Toyhub | Login</title>
+            </Helmet>
             <div className="px-6 h-full">
                 <div
                     className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"

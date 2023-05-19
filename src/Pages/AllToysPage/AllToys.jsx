@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const AllToys = () => {
     const { isLoading, data: toys } = useQuery({
@@ -30,6 +31,9 @@ const AllToys = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Animals Toyhub | All Toys</title>
+            </Helmet>
             <h1 className='text-center text-3xl'>All Toys</h1>
             {/* search bar  */}
 
