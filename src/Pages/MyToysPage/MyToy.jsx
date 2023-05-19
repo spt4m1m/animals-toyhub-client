@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const MyToy = ({ toy, refetch, index }) => {
-    const { name, price, availableQuantity, category, sellerName, } = toy;
+    const { photoUrl, name, price, availableQuantity, category, sellerName, } = toy;
 
     const handleToyDelete = (id) => {
         fetch(`http://localhost:5000/alltoys/delete/${id}`, {
@@ -20,7 +20,10 @@ const MyToy = ({ toy, refetch, index }) => {
     }
     return (
         <tr>
-            <th>{index + 1}</th>
+            <th><span>{index + 1}</span></th>
+            <th><div className="w-10 rounded-full">
+                <img src={photoUrl} />
+            </div></th>
             <td>{name}</td>
             <td>{category}</td>
             <td>{price}Tk.</td>

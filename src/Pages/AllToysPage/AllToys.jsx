@@ -23,6 +23,7 @@ const AllToys = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>img</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
@@ -35,6 +36,9 @@ const AllToys = () => {
                         {
                             toys.slice(0, 20).map((toy, index) => <tr>
                                 <th>{index + 1}</th>
+                                <th><div className="w-10 rounded-full">
+                                    <img src={toy.photoUrl} />
+                                </div></th>
                                 <td>{toy.name}</td>
                                 <td>{toy.category}</td>
                                 <td>{toy.price}Tk.</td>
