@@ -142,6 +142,13 @@ const Register = () => {
                                                     className="block w-full max-w-xs mx-auto btn btn-primary normal-case">REGISTER NOW</button>
                                             </div>
                                         </div>
+                                        <p className="ms-4 text-sm font-semibold mt-2 pt-1 mb-0">
+                                            Don't have an account?
+                                            <Link
+                                                to="/login"
+                                                className="text-primary transition duration-200 ease-in-out underline"
+                                            >Login</Link>
+                                        </p>
                                     </div>
                                 </form>
                             </div>
