@@ -3,7 +3,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import MyToy from './MyToy';
 import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext)
@@ -19,36 +19,38 @@ const MyToys = () => {
     }
 
     return (
-        <div>
-            <Helmet>
-                <title>Animals Toyhub | My Toys</title>
-            </Helmet>
-            <h1 className='text-center text-3xl'>{`You added ${toys.length} Toys`}</h1>
+        <HelmetProvider>
+            <div>
+                <Helmet>
+                    <title>Animals Toyhub | My Toys</title>
+                </Helmet>
+                <h1 className='text-center text-3xl'>{`You added ${toys.length} Toys`}</h1>
 
-            <div className="overflow-x-auto my-10">
-                <table className="table table-compact w-full">
-                    <thead>
-                        <tr className='text-center'>
-                            <th></th>
-                            <th>img</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Seller</th>
-                            <th>Acton</th>
-                            <th>Acton</th>
-                        </tr>
-                    </thead>
-                    <tbody className='text-center'>
-                        {
-                            toys.slice(0, 20).map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />)
-                        }
-                    </tbody>
-                </table>
+                <div className="overflow-x-auto my-10">
+                    <table className="table table-compact w-full">
+                        <thead>
+                            <tr className='text-center'>
+                                <th></th>
+                                <th>img</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Seller</th>
+                                <th>Acton</th>
+                                <th>Acton</th>
+                            </tr>
+                        </thead>
+                        <tbody className='text-center'>
+                            {
+                                toys.slice(0, 20).map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
+        </HelmetProvider>
     );
 };
 
