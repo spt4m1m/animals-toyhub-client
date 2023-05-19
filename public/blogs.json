@@ -1,0 +1,26 @@
+[
+    {
+        "_id": 1,
+        "blogImg": "https://i.ibb.co/hRrSLnF/access-Token-Or-Refresh-Token.jpg",
+        "question": "What is an access token and refresh token? How do they work and where should we store them on the client-side?",
+        "answer": "JWT (jsonwebtoken) access token and a refresh token are commonly used in authentication systems to grant and manage access to protected resources. When a user authenticate with a server using their credentials like username/email or password, the server verifies the credentials and generates an access token and a refresh token. if user want to access their protected resources they must should request the server with their access token, ganarally access token send in the Authorization header or as a query parameter. if the token valid they can access their resources otherwise they can't access their infos. Access token has limited time to expire, if the token expired the client can use the refresh token to request a new access token from the server. If the refresh token is valid and not expired, the server generates a new access token and returns it to the client. And the best option is store the access token is client-side cookies."
+    },
+    {
+        "_id": 2,
+        "blogImg": "https://i.ibb.co/m0f6RKC/sql-Vs-Nosql.jpg",
+        "question": "Compare SQL and NoSQL databases?",
+        "answer": "SQL (Structured Query Language) and NoSQL (Not Only SQL) databases are two different types of database management systems that serve different purposes.SQL databases are based on a structured schema,NoSQL databases are schema-less or have flexible schemas. SQL databases use a relational data model, organizing data into tables with predefined schemas, NoSQL databases use various data models, such as key-value pairs, documents. SQL databases use SQL as the query language to perform operations like data retrieval, manipulation, and aggregation, NoSQL databases have different query languages specific to their data models. For example, MongoDB uses a JSON-based query language. SQL example MySQL database and NoSQL example Mongodb database."
+    },
+    {
+        "_id": 3,
+        "blogImg": "https://i.ibb.co/ZL1jK6w/express-Vsnest.jpg",
+        "question": "What is express js? What is Nest JS?",
+        "answer": "Express.js and Nest.js are both popular JavaScript frameworks used for building server-side applications.Express.js is a minimalist and flexible web application framework for Node.js. It provides a set of features and utilities to build web applications and APIs.Nest.js is a progressive and opinionated full-stack framework for building scalable and maintainable server-side applications.Both Express.js and Nest.js are powerful frameworks."
+    },
+    {
+        "_id": 4,
+        "blogImg": "https://i.ibb.co/CV6mJj9/mongodb-Aggegestion.jpg",
+        "question": "What is MongoDB aggregate and how does it work?",
+        "answer": "In MongoDB, the aggregate method is a powerful feature that allows to perform complex data aggregation operations on collections. It provides a flexible way to process and transform data using a pipeline of stages.The aggregate method takes an array of stages as its argument, where each stage represents a specific data processing step.The aggregate method provides a flexible and efficient way to perform data manipulation, transformation, and analysis within MongoDB"
+    }
+]

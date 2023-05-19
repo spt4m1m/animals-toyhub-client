@@ -22,6 +22,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import SingleToy from './Components/SingleToy/SingleToy.jsx';
 import UpdateToy from './Components/SingleToy/UpdateToy.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
+import SingleBlog from './Pages/Blogs/SingleBlog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs />
+      },
+      {
+        path: '/blog/:id',
+        element: <SingleBlog />
       },
       {
         path: '/alltoys',
