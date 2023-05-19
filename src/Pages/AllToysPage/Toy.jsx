@@ -9,13 +9,10 @@ const Toy = ({ toy }) => {
                 <figure><img src={photoUrl} alt="toy photo" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl">{name}</h2>
-                    <p><strong>Desc :</strong> {description}</p>
                     <p><strong>Price :</strong> {price}Tk.</p>
                     <p><strong>Available :</strong> {availableQuantity} Pcs.</p>
                     <p><strong>Ratings :</strong> {ratings}/10</p>
                     <p><strong>Category :</strong> {category}</p>
-                    <p><strong>Seller Name :</strong> {sellerName}</p>
-                    <p><strong>Seller Email :</strong> {sellerEmail}</p>
                     <div className="card-actions justify-end">
                         <Link to={`/alltoys/${toy._id}`} className="btn btn-primary normal-case">View More</Link>
                     </div>

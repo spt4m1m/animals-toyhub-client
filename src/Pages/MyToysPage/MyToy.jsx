@@ -7,16 +7,19 @@ const MyToy = ({ toy, refetch, index }) => {
     const { photoUrl, name, price, availableQuantity, category, sellerName, } = toy;
 
     const handleToyDelete = (id) => {
-        fetch(`http://localhost:5000/alltoys/delete/${id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status == 'success') {
-                    toast.success('Deleted A Toy')
-                    refetch()
-                }
+        const isConfirm = window.confirm('Are You Sure to Delete This Toy?')
+        if (isConfirm) {
+            fetch(`http://localhost:5000/alltoys/delete/${id}`, {
+                method: "DELETE"
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status == 'success') {
+                        toast.success('Deleted A Toy')
+                        refetch()
+                    }
+                })
+        }
     }
     return (
         <tr>
