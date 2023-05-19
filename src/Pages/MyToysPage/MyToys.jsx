@@ -21,10 +21,26 @@ const MyToys = () => {
         <div>
             <h1 className='text-center text-3xl'>{`You added ${toys.length} Toys`}</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-3'>
-                {
-                    toys.map(toy => <MyToy toy={toy} key={toy._id} refetch={refetch} />)
-                }
+            <div className="overflow-x-auto my-10">
+                <table className="table table-compact w-full">
+                    <thead>
+                        <tr className='text-center'>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Seller</th>
+                            <th>Acton</th>
+                            <th>Acton</th>
+                        </tr>
+                    </thead>
+                    <tbody className='text-center'>
+                        {
+                            toys.slice(0, 20).map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />)
+                        }
+                    </tbody>
+                </table>
             </div>
 
         </div>
