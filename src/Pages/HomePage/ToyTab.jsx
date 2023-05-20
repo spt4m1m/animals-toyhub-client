@@ -7,7 +7,7 @@ const ToyTab = () => {
     const [toys, setToys] = useState([]);
     const [category, setCategory] = useState('Horse')
     useEffect(() => {
-        fetch(`http://localhost:5000/category?category=${category}`)
+        fetch(`https://animals-toyhub-server.vercel.app/category?category=${category}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [category])

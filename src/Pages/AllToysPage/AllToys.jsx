@@ -9,7 +9,7 @@ const AllToys = () => {
     const { isLoading, data: toys } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch('http://localhost:5000/alltoys').then(
+            fetch('https://animals-toyhub-server.vercel.app/alltoys').then(
                 (res) => res.json(),
             ),
     })

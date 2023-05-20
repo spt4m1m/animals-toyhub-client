@@ -30,7 +30,7 @@ const AddToy = () => {
             sellerName,
             category
         }
-        fetch('http://localhost:5000/alltoys', {
+        fetch('https://animals-toyhub-server.vercel.app/alltoys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

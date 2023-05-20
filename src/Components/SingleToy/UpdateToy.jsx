@@ -11,7 +11,7 @@ const UpdateToy = () => {
     const [controller, setController] = useState(true)
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys/${id}`)
+        fetch(`https://animals-toyhub-server.vercel.app/alltoys/${id}`)
             .then(res => res.json())
             .then(data => {
                 setToy(data)
@@ -42,7 +42,7 @@ const UpdateToy = () => {
             sellerName,
             category
         }
-        fetch(`http://localhost:5000/updatetoy/${id}`, {
+        fetch(`https://animals-toyhub-server.vercel.app/updatetoy/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

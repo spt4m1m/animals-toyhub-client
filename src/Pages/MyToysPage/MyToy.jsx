@@ -9,7 +9,7 @@ const MyToy = ({ toy, refetch, index }) => {
     const handleToyDelete = (id) => {
         const isConfirm = window.confirm('Are You Sure to Delete This Toy?')
         if (isConfirm) {
-            fetch(`http://localhost:5000/alltoys/delete/${id}`, {
+            fetch(`https://animals-toyhub-server.vercel.app/alltoys/delete/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

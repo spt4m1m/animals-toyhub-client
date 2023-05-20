@@ -12,7 +12,7 @@ const MyToys = () => {
     const { isLoading, data: toys, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch(`http://localhost:5000/alltoys?email=${user.email}`).then(
+            fetch(`https://animals-toyhub-server.vercel.app/alltoys?email=${user.email}`).then(
                 (res) => res.json(),
             ),
     })
@@ -22,7 +22,7 @@ const MyToys = () => {
     const handleSelectSort = (e) => {
         const select = e.target.value;
         if (select == "Ascending") {
-            fetch(`http://localhost:5000/ascendingsort?email=${user.email}`)
+            fetch(`https://animals-toyhub-server.vercel.app/ascendingsort?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setSortData(data)
@@ -31,7 +31,7 @@ const MyToys = () => {
 
         }
         if (select == "Dscending") {
-            fetch(`http://localhost:5000/dscendingsort?email=${user.email}`)
+            fetch(`https://animals-toyhub-server.vercel.app/dscendingsort?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setSortData(data)
