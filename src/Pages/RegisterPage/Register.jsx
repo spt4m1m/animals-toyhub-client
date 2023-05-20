@@ -13,9 +13,6 @@ const Register = () => {
     const navigate = useNavigate()
     const { registerAUser, updateAUserProfile, googleLogin, loading, setLoading } = useContext(AuthContext);
 
-    if (loading) {
-        return <Loading />
-    }
 
     // email pass register 
     const handleRegisterAUser = e => {
@@ -65,6 +62,10 @@ const Register = () => {
     useEffect(() => {
         AOS.init()
     }, [])
+
+    if (loading) {
+        return <Loading />
+    }
 
     return (
         <HelmetProvider>

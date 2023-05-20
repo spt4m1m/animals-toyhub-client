@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -13,17 +13,8 @@ const Login = () => {
     const navigate = useNavigate();
     const { loginAUser, googleLogin, loading, setLoading } = useContext(AuthContext);
     const from = location?.state?.from?.pathname || '/';
-    const notify = location?.state?.alert;
-    useEffect(() => {
-        if (notify) {
+    const alert = location?.state?.alert;
 
-            toast.error(`${notify}`)
-        }
-    }, [])
-
-    if (loading) {
-        return <Loading />
-    }
 
     // email pass login 
     const handleLoginAUser = e => {
@@ -64,11 +55,15 @@ const Login = () => {
                 }
             })
     }
-
     useEffect(() => {
         AOS.init()
+        if (alert) {
+            toast.error(`${alert}`)
+        }
     }, [])
-
+    if (loading) {
+        return <Loading />
+    }
 
     return (
         <HelmetProvider>

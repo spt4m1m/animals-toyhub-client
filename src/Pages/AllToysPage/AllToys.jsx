@@ -17,9 +17,7 @@ const AllToys = () => {
     })
     const [searchedToy, setSearchedToy] = useState([]);
     const [searchText, setSearchText] = useState('')
-    if (isLoading) {
-        return <Loading />
-    }
+
 
     const handleSearch = e => {
         e.preventDefault()
@@ -33,6 +31,9 @@ const AllToys = () => {
     useEffect(() => {
         AOS.init()
     }, [])
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <HelmetProvider>

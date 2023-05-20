@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Blog from './Blog';
+import Loading from '../../Components/Loading/Loading';
 
 const Blogs = () => {
+    const [loading, setLoading] = useState(true);
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         fetch('blogs.json')
             .then(res => res.json())
-            .then(data => setBlogs(data))
+            .then(data => {
+                setBlogs(data)
+                setLoading(false)
+            })
     }, [])
+    if (loading) {
+        return <Loading />
+    }
     return (
         <HelmetProvider>
             <div>

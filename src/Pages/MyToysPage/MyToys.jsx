@@ -18,9 +18,6 @@ const MyToys = () => {
                 (res) => res.json(),
             ),
     })
-    if (isLoading) {
-        return <Loading />
-    }
     const handleSelectSort = (e) => {
         const select = e.target.value;
         if (select == "Ascending") {
@@ -44,6 +41,10 @@ const MyToys = () => {
     useEffect(() => {
         AOS.init()
     }, [])
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <HelmetProvider>
