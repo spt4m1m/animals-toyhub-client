@@ -4,9 +4,11 @@ import MyToy from './MyToy';
 import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { toast } from 'react-hot-toast';
 
 const MyToys = () => {
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+    const [sortData, setSortData] = useState([]);
     const { isLoading, data: toys, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
@@ -17,6 +19,21 @@ const MyToys = () => {
     if (isLoading) {
         return <Loading />
     }
+    const handleSelectSort = (e) => {
+        const select = e.target.value;
+        if (select == "Ascending") {
+            fetch(`http://localhost:5000/ascendingsort`)
+                .then(res => res.json())
+                .then(data => setSortData(data))
+            toast.success('Toys Ascending by Price')
+        }
+        if (select == "Dscending") {
+            fetch(`http://localhost:5000/dscendingsor`)
+                .then(res => res.json())
+                .then(data => setSortData(data))
+            toast.success('Toys Dscending by Price')
+        }
+    }
 
     return (
         <HelmetProvider>
@@ -25,6 +42,14 @@ const MyToys = () => {
                     <title>Animals Toyhub | My Toys</title>
                 </Helmet>
                 <h1 className='text-center text-3xl'>{`You added ${toys.length} Toys`}</h1>
+                {/* select for sort  */}
+                <div className='mx-3'>
+                    <select onChange={handleSelectSort} name='sortSelect' className="select select-primary w-full max-w-xs">
+                        <option defaultValue>Sort Toy By Price</option>
+                        <option value="Dscending">Dscending</option>
+                        <option value="Ascending">Ascending</option>
+                    </select>
+                </div>
 
                 <div className="overflow-x-auto my-10">
                     <table className="table table-compact w-full">
@@ -43,7 +68,7 @@ const MyToys = () => {
                         </thead>
                         <tbody className='text-center'>
                             {
-                                toys.slice(0, 20).map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />)
+                                sortData.length > 0 ? sortData.map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />) : toys.slice(0, 20).map((toy, index) => <MyToy key={toy._id} toy={toy} index={index} refetch={refetch} />)
                             }
                         </tbody>
                     </table>

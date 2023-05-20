@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -10,7 +10,12 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { loginAUser, googleLogin, loading, setLoading } = useContext(AuthContext);
-    const from = location.state?.from?.pathname || '/';
+    const from = location?.state?.from?.pathname || '/';
+    const notify = location?.state?.alert;
+    if (notify) {
+
+        toast.error(`${notify}`)
+    }
 
     if (loading) {
         return <Loading />
