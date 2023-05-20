@@ -6,6 +6,7 @@ import ToyTab from './ToyTab';
 import ToyCarousel from './ToyCarousel';
 import Testimonial from './Testimonial';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Contact from './Contact';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 <ToyCarousel />
                 <ToyTab />
                 <Testimonial />
+                <Contact />
             </div>
         </HelmetProvider>
     );
