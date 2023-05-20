@@ -5,6 +5,8 @@ import { toast } from 'react-hot-toast';
 import Loading from '../../Components/Loading/Loading';
 import loginImg from '../../assets/login.svg'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Login = () => {
     const location = useLocation();
@@ -63,6 +65,10 @@ const Login = () => {
             })
     }
 
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
 
     return (
         <HelmetProvider>
@@ -74,10 +80,10 @@ const Login = () => {
                 <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
                     <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden max-w-[1000px]" >
                         <div className="md:flex w-full">
-                            <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
+                            <div data-aos='fade-right' className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
                                 <img src={loginImg} alt="" />
                             </div>
-                            <div className=" lg:w-1/2 mx-auto">
+                            <div data-aos='fade-left' className=" lg:w-1/2 mx-auto">
                                 <div className="bg-gray-100 rounded-t-lg p-8">
                                     <p className="text-center text-sm text-gray-400 font-light">Log in with</p>
                                     <div>

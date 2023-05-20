@@ -2,6 +2,8 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Icon } from '@iconify/react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Testimonial = () => {
     const responsive = {
@@ -26,7 +28,7 @@ const Testimonial = () => {
     return (
         <div>
 
-            <div className="min-w-screen min-h-[50vh] bg-gray-50 flex items-center justify-center py-5">
+            <div data-aos="fade-up" className="min-w-screen min-h-[50vh] bg-gray-50 flex items-center justify-center py-5">
                 <div className="w-full bg-white border-gray-200 px-5 text-gray-800">
                     <div className="w-full max-w-6xl mx-auto">
                         <div className="text-center max-w-xl mx-auto">

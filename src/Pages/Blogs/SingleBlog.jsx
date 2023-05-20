@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const SingleBlog = () => {
     const navigate = useNavigate();
@@ -9,6 +11,7 @@ const SingleBlog = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        AOS.init()
         fetch('/blogs.json')
             .then(res => res.json())
             .then(data => {
@@ -22,7 +25,7 @@ const SingleBlog = () => {
     }
     return (
         <HelmetProvider>
-            <div className="card bg-base-100 shadow-xl">
+            <div data-aos="zoom-in" className="card bg-base-100 shadow-xl">
                 <Helmet>
                     <title>Animals Toyhub | Single Blog</title>
                 </Helmet>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ToyCarousel = () => {
     const responsive = {
@@ -22,8 +24,11 @@ const ToyCarousel = () => {
             items: 1
         }
     };
+    useEffect(() => {
+        AOS.init()
+    }, [])
     return (
-        <div className='mx-auto max-w-[1200px] py-10'>
+        <div data-aos-duration="2000" data-aos="fade-up" className='mx-auto max-w-[1200px] py-10'>
             <h2 className='text-3xl text-center font-semibold'>Toys Gallery</h2>
             <Carousel swipeable={false}
                 draggable={true}

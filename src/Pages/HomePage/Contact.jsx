@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Contact = () => {
     const handleMessage = e => {
@@ -8,6 +10,9 @@ const Contact = () => {
         toast.success("Thanks for send us message")
         e.target.reset()
     }
+    useEffect(() => {
+        AOS.init()
+    }, [])
     return (
         <div>
             <section className="bg-white">
@@ -21,7 +26,7 @@ const Contact = () => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
-                        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+                        <div data-aos="fade-up" className="grid grid-cols-1 gap-12 md:grid-cols-2">
                             <div className='text-center border shadow rounded-lg py-3'>
                                 <div className='text-center'>
                                     <span className="inline-block p-3 text-white bg-primary rounded-full text-3xl">
@@ -65,7 +70,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="p-4 py-6 rounded-lg bg-gray-200">
+                        <div data-aos="fade-up" className="p-4 py-6 rounded-lg bg-gray-200">
                             <form onSubmit={handleMessage}>
                                 <div className="-mx-2 md:items-center md:flex">
                                     <div className="flex-1 px-2">

@@ -5,6 +5,8 @@ import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
@@ -39,10 +41,13 @@ const MyToys = () => {
                 })
         }
     }
+    useEffect(() => {
+        AOS.init()
+    }, [])
 
     return (
         <HelmetProvider>
-            <div>
+            <div data-aos="zoom-in">
                 <Helmet>
                     <title>Animals Toyhub | My Toys</title>
                 </Helmet>

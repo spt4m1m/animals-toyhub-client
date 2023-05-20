@@ -4,6 +4,8 @@ import Loading from '../../Components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AllToys = () => {
     const { isLoading, data: toys } = useQuery({
@@ -28,6 +30,9 @@ const AllToys = () => {
         setSearchedToy(match);
         e.target.reset();
     }
+    useEffect(() => {
+        AOS.init()
+    }, [])
 
     return (
         <HelmetProvider>
@@ -38,7 +43,7 @@ const AllToys = () => {
                 <h1 className='text-center text-3xl'>All Toys</h1>
                 {/* search bar  */}
 
-                <div className="mb-3 w-[300px] mx-auto my-10">
+                <div data-aos="zoom-in" className="mb-3 w-[300px] mx-auto my-10">
                     <form onSubmit={handleSearch} className="relative mb-4 flex w-full flex-wrap items-stretch">
                         <input
                             name='search'
@@ -84,7 +89,7 @@ const AllToys = () => {
                                 <th>More info</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody data-aos="zoom-in">
                             {
                                 searchedToy.length > 1 ? searchedToy.map((toy, index) => <tr key={toy._id}>
                                     <th>{index + 1}</th>
