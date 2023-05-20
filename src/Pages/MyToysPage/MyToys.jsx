@@ -26,7 +26,6 @@ const MyToys = () => {
                 .then(res => res.json())
                 .then(data => {
                     setSortData(data)
-                    console.log(data);
                     toast.success('Toys Ascending by Price')
                 })
 
@@ -36,7 +35,6 @@ const MyToys = () => {
                 .then(res => res.json())
                 .then(data => {
                     setSortData(data)
-                    console.log(data);
                     toast.success('Toys Dscending by Price')
                 })
         }
