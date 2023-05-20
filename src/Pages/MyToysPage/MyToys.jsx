@@ -22,16 +22,23 @@ const MyToys = () => {
     const handleSelectSort = (e) => {
         const select = e.target.value;
         if (select == "Ascending") {
-            fetch(`http://localhost:5000/ascendingsort`)
+            fetch(`http://localhost:5000/ascendingsort?email=${user.email}`)
                 .then(res => res.json())
-                .then(data => setSortData(data))
-            toast.success('Toys Ascending by Price')
+                .then(data => {
+                    setSortData(data)
+                    console.log(data);
+                    toast.success('Toys Ascending by Price')
+                })
+
         }
         if (select == "Dscending") {
-            fetch(`http://localhost:5000/dscendingsor`)
+            fetch(`http://localhost:5000/dscendingsort?email=${user.email}`)
                 .then(res => res.json())
-                .then(data => setSortData(data))
-            toast.success('Toys Dscending by Price')
+                .then(data => {
+                    setSortData(data)
+                    console.log(data);
+                    toast.success('Toys Dscending by Price')
+                })
         }
     }
 

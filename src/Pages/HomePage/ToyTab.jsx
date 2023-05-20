@@ -24,7 +24,7 @@ const ToyTab = () => {
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-3'>
                         {
-                            [...toys].reverse().slice(0, 3).map(toy => <Toy toy={toy} key={toy._id} />)
+                            toys.slice(3, 6).map(toy => <Toy toy={toy} key={toy._id} />)
                         }
                     </div>
                 </TabPanel>
