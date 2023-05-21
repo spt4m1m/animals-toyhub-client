@@ -10,7 +10,7 @@ const ToyTab = () => {
     const [category, setCategory] = useState('Horse')
     useEffect(() => {
         AOS.init()
-        fetch(`https://animals-toyhub-server.vercel.app/category?category=${category}`)
+        fetch(`https://animals-toyhub-server-production.up.railway.app/category?category=${category}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [category])
