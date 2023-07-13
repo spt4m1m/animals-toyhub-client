@@ -11,7 +11,7 @@ const AllToys = () => {
     const { isLoading, data: toys } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch('https://animals-toyhub-server-production.up.railway.app/alltoys').then(
+            fetch('https://animals-toyhub-server.vercel.app/alltoys').then(
                 (res) => res.json(),
             ),
     })

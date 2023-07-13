@@ -30,7 +30,7 @@ const AddToy = () => {
             sellerName,
             category
         }
-        fetch('https://animals-toyhub-server-production.up.railway.app/alltoys', {
+        fetch('https://animals-toyhub-server.vercel.app/alltoys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
