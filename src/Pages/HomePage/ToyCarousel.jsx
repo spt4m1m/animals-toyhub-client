@@ -28,7 +28,7 @@ const ToyCarousel = () => {
         AOS.init()
     }, [])
     return (
-        <div data-aos-duration="2000" data-aos="fade-up" className='mx-auto max-w-[1200px] py-10'>
+        <div data-aos-duration="2000" data-aos="fade-up" className='mx-auto max-w-[1200px] py-20'>
             <h2 className='text-3xl text-center font-semibold'>Toys Gallery</h2>
             <Carousel swipeable={false}
                 draggable={true}
